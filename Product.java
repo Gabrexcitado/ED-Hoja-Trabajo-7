@@ -27,6 +27,10 @@ public class Product {
         this.description = description;
     }
 
+    public String getDescription(){
+        return description;
+    }
+
     /**
      * Metodo que convierte la ultima columna del csv en un mapa
      * @return mapa con tallas como claves y cantidad como valor
@@ -113,6 +117,6 @@ public class Product {
      * Convierte el Producto en formato de CSV
      */
     public String toString(){
-        return SKU + "," + "," + description + "," + mapToCSV();
+        return SKU + ","  + name + "," + description + "," + mapToCSV();
     }
 }

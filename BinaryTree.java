@@ -6,7 +6,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
     /**
      * Clase privada Nodo, implementando la estructura <K,V>
      */
-    private class Node {
+    protected class Node {
         K key;
         V value;
         Node left, right;
@@ -20,6 +20,10 @@ public class BinaryTree<K extends Comparable<K>, V> {
             this.key = key;
             this.value = value;
             left = right = null;
+        }
+
+        V getValue(){
+            return value;
         }
     }
 
@@ -35,11 +39,12 @@ public class BinaryTree<K extends Comparable<K>, V> {
     public Node insert(Node root, K key, V value) {
         //si esta vacio
         if (root == null) {
-            return new Node(key, value);
+            root = new Node(key, value);
+            return root;
         }
 
         //Si se repite la clave
-        if (key.equals(root.key)) { // Se usa equals() en lugar de ==
+        if (key.equals(root.key)) {
             root.value = value;
             return root;
         }
@@ -62,7 +67,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
      */
     public Node search(Node root, K key) {
         //nulo o encontrada
-        if (root == null || key.equals(root.key)) { // Se usa equals() en lugar de ==
+        if (root == null || key.equals(root.key)) { 
             return root;
         }
 
@@ -88,4 +93,16 @@ public class BinaryTree<K extends Comparable<K>, V> {
         System.out.print(root.key + " : " + root.value + "\n");
         listInOrder(root.right);
     }  
+
+    /**
+     * Acceder a la raiz
+     * @return raiz
+     */
+    public Node getRoot(){
+        return root;
+    }
+
+    public void setRoot(Node root){
+        this.root = root;
+    }
 }
